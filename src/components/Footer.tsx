@@ -19,13 +19,13 @@ export default function Footer() {
               Especialistas em remoção e encaminhamento para clínicas de reabilitação. Atendimento 24h em todo o Brasil.
             </p>
             <div className="flex gap-4">
-              <a href="#" className="w-10 h-10 bg-white/5 border border-white/10 rounded-full flex items-center justify-center hover:bg-brand-blue transition-all">
+              <a href="#" aria-label="Siga-nos no Instagram" className="w-10 h-10 bg-white/5 border border-white/10 rounded-full flex items-center justify-center hover:bg-brand-blue transition-all">
                 <Instagram size={20} />
               </a>
-              <a href="#" className="w-10 h-10 bg-white/5 border border-white/10 rounded-full flex items-center justify-center hover:bg-brand-blue transition-all">
+              <a href="#" aria-label="Curta nossa página no Facebook" className="w-10 h-10 bg-white/5 border border-white/10 rounded-full flex items-center justify-center hover:bg-brand-blue transition-all">
                 <Facebook size={20} />
               </a>
-              <a href="#" className="w-10 h-10 bg-white/5 border border-white/10 rounded-full flex items-center justify-center hover:bg-brand-blue transition-all">
+              <a href="#" aria-label="Conecte-se conosco no LinkedIn" className="w-10 h-10 bg-white/5 border border-white/10 rounded-full flex items-center justify-center hover:bg-brand-blue transition-all">
                 <Linkedin size={20} />
               </a>
             </div>
