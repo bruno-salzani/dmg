@@ -4,6 +4,8 @@ import { Phone, Mail, MapPin, MessageSquare, Send } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
+import { CONTACT_PHONE, CONTACT_PHONE_RAW, WHATSAPP_URL } from '@/src/constants';
+import { WhatsAppIcon } from './Icons';
 
 const contactSchema = z.object({
   name: z.string().min(2, 'Nome muito curto'),
@@ -19,11 +21,19 @@ export default function Contact() {
   });
 
   const onSubmit = async (data: ContactFormData) => {
-    // Logic for form submission
-    console.log(data);
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    alert('Mensagem enviada com sucesso! Nossa equipe entrará em contato em breve.');
-    reset();
+    try {
+      const text = `Olá! Solicitação de Atendimento pelo Site:
+*Nome:* ${data.name}
+*Telefone:* ${data.phone}
+*Caso:* ${data.message}`;
+      
+      const whatsappUrl = `https://wa.me/${CONTACT_PHONE_RAW}?text=${encodeURIComponent(text)}`;
+      window.open(whatsappUrl, '_blank');
+      reset();
+    } catch (error) {
+      console.error('Erro ao enviar para WhatsApp:', error);
+      alert('Ocorreu um erro ao processar sua solicitação. Por favor, tente novamente ou ligue diretamente.');
+    }
   };
 
   return (
@@ -46,18 +56,18 @@ export default function Contact() {
                     </div>
                     <div>
                       <p className="text-sm text-slate-400 uppercase tracking-widest font-bold mb-1">Telefone 24h</p>
-                      <p className="text-xl font-bold">0800 000 0000</p>
+                      <p className="text-xl font-bold">{CONTACT_PHONE}</p>
                     </div>
                   </div>
 
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center text-brand-blue border border-white/10">
-                      <MessageSquare size={22} />
+                    <div className="w-12 h-12 bg-brand-green/10 rounded-2xl flex items-center justify-center text-brand-green border border-brand-green/20">
+                      <WhatsAppIcon size={22} />
                     </div>
-                    <div>
-                      <p className="text-sm text-slate-400 uppercase tracking-widest font-bold mb-1">WhatsApp</p>
-                      <p className="text-xl font-bold">(11) 99999-9999</p>
-                    </div>
+                    <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="block hover:translate-x-1 transition-transform">
+                      <p className="text-sm text-slate-400 uppercase tracking-widest font-bold mb-1">WhatsApp Emergencial</p>
+                      <p className="text-xl font-bold text-brand-green underline decoration-green-500/30 underline-offset-4">{CONTACT_PHONE}</p>
+                    </a>
                   </div>
 
                   <div className="flex items-start gap-4">

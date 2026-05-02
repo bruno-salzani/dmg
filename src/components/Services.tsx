@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { Truck, UserCheck, UserX, UserPlus, Users2, ArrowUpRight } from 'lucide-react';
+import { WHATSAPP_URL } from '@/src/constants';
 
 const services = [
   {
@@ -64,8 +65,8 @@ export default function Services() {
               <p className="text-slate-600 leading-relaxed mb-6">
                 {service.desc}
               </p>
-              <a href="#contato" className="inline-flex items-center gap-2 text-brand-blue font-bold text-sm uppercase tracking-wider">
-                Saber Mais <ArrowUpRight size={16} />
+              <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-brand-blue font-black text-sm uppercase tracking-wider group/link">
+                Falar no WhatsApp <ArrowUpRight size={16} className="group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform" />
               </a>
               
               {/* Background Glow */}
@@ -87,7 +88,9 @@ export default function Services() {
               </p>
             </div>
             <a
-              href="https://wa.me/5500000000000"
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noreferrer"
               className="bg-white text-brand-blue px-6 py-4 rounded-xl flex items-center justify-center gap-3 font-bold hover:bg-slate-100 transition-colors"
             >
               Falar com Especialista

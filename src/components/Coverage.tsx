@@ -43,21 +43,14 @@ export default function Coverage() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.8, rotate: 5 }}
-            whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             className="flex justify-center"
           >
             {/* Stylized Visual of Brazil Map Area */}
             <div className="relative w-full aspect-square max-w-lg bg-brand-blue/5 rounded-full flex items-center justify-center">
-              <div className="absolute inset-0 border-[40px] border-white/5 rounded-full animate-pulse" />
-              <div className="relative z-10 w-full p-8">
-                <img 
-                  src="https://upload.wikimedia.org/wikipedia/commons/4/43/Brazil_map_clean.svg" 
-                  alt="Mapa do Brasil"
-                  className="w-full h-auto brightness-0 invert opacity-40 hover:opacity-100 transition-opacity duration-700 cursor-help filter drop-shadow-[0_0_20px_rgba(10,88,202,0.5)]"
-                />
-              </div>
+              <div className="absolute inset-0 border-[20px] md:border-[40px] border-white/5 rounded-full" />
               
               {/* Animated Location Pins */}
               <div className="absolute top-1/4 right-1/4 w-3 h-3 bg-brand-blue rounded-full shadow-[0_0_10px_#0A58CA] animate-bounce" />

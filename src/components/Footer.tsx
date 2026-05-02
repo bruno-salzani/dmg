@@ -1,5 +1,7 @@
 import React from 'react';
-import { MessageCircle, Shield, Phone, MapPin, Facebook, Instagram, Linkedin } from 'lucide-react';
+import { Shield, Phone, MapPin, Facebook, Instagram, Linkedin } from 'lucide-react';
+import { CONTACT_PHONE, WHATSAPP_URL } from '@/src/constants';
+import { WhatsAppIcon } from './Icons';
 
 export default function Footer() {
   return (
@@ -54,17 +56,17 @@ export default function Footer() {
             <ul className="space-y-6">
               <li className="flex items-start gap-4">
                 <Phone className="text-brand-blue shrink-0" size={20} />
-                <div>
-                  <p className="text-xs uppercase text-slate-500 font-bold mb-1 tracking-wider">Emergência</p>
-                  <p className="text-lg font-bold">0800 000 0000</p>
-                </div>
+                <a href={`tel:${CONTACT_PHONE.replace(/\D/g, '')}`} className="hover:text-brand-blue transition-colors">
+                  <p className="text-xs uppercase text-slate-500 font-bold mb-1 tracking-wider">Emergência 24h</p>
+                  <p className="text-xl font-bold">{CONTACT_PHONE}</p>
+                </a>
               </li>
               <li className="flex items-start gap-4">
-                <MapPin className="text-brand-blue shrink-0" size={20} />
-                <div>
-                  <p className="text-xs uppercase text-slate-500 font-bold mb-1 tracking-wider">Localização</p>
-                  <p className="font-medium">Atendimento em todo o Brasil</p>
-                </div>
+                <WhatsAppIcon className="text-brand-green shrink-0" size={20} />
+                <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="hover:text-brand-green transition-colors">
+                  <p className="text-xs uppercase text-slate-500 font-bold mb-1 tracking-wider">WhatsApp 24h</p>
+                  <p className="text-lg font-bold">{CONTACT_PHONE}</p>
+                </a>
               </li>
             </ul>
           </div>

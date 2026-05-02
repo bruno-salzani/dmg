@@ -1,6 +1,8 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Heart, Users, Star, CheckCircle2 } from 'lucide-react';
+import { Heart, Users, Star, CheckCircle2, ArrowRight } from 'lucide-react';
+import { WhatsAppIcon } from './Icons';
+import { WHATSAPP_URL } from '@/src/constants';
 
 const values = [
   {
@@ -32,11 +34,15 @@ export default function About() {
             transition={{ duration: 0.6 }}
             className="relative"
           >
-            <div className="relative z-10 rounded-3xl overflow-hidden shadow-2xl">
+            <div className="relative z-10 rounded-3xl overflow-hidden shadow-2xl bg-white border border-slate-100">
               <img 
-                src="https://images.unsplash.com/photo-1559839734-2b71f1e3c770?auto=format&fit=crop&q=80&w=1000" 
-                alt="Médicos conversando de forma humanizada"
-                className="w-full h-auto"
+                src="https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&q=80&w=1000" 
+                alt="Atendimento médico humanizado DMG"
+                loading="lazy"
+                referrerPolicy="no-referrer"
+                width="1000"
+                height="700"
+                className="w-full h-auto object-cover min-h-[400px]"
               />
             </div>
             {/* Stats Overlay */}
@@ -74,7 +80,7 @@ export default function About() {
               ))}
             </div>
 
-            <div className="grid sm:grid-cols-3 gap-6 pt-6 border-t border-slate-100">
+            <div className="grid sm:grid-cols-3 gap-6 pt-6 border-t border-slate-100 mb-10">
               {values.map((v, i) => (
                 <div key={i} className="flex flex-col gap-2">
                   <div className="mb-1">{v.icon}</div>
@@ -83,6 +89,17 @@ export default function About() {
                 </div>
               ))}
             </div>
+
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-3 bg-brand-green text-white px-8 py-4 rounded-xl font-bold shadow-lg shadow-green-100 hover:bg-green-600 transition-all group"
+            >
+              <WhatsAppIcon size={20} />
+              Solicitar Ajuda Agora
+              <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+            </a>
           </motion.div>
         </div>
       </div>

@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Phone, Menu, X, MessageCircle } from 'lucide-react';
+import { Phone, Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { cn } from '@/src/lib/utils';
+import { WhatsAppIcon } from './Icons';
+
+import { CONTACT_PHONE, WHATSAPP_URL } from '@/src/constants';
 
 const navItems = [
   { name: 'Início', href: '#' },
@@ -37,8 +40,7 @@ export default function Header() {
           </div>
           <span className={cn(
             "text-2xl font-bold tracking-tighter transition-colors",
-            isScrolled ? "text-brand-dark" : "text-white md:text-brand-dark lg:text-brand-dark xl:text-brand-dark"
-            /* Actually, if not scrolled, it might be over a dark hero, so let's check hero color later */
+            isScrolled ? "text-brand-dark" : "text-white"
           )}>
             DMG
           </span>
@@ -52,7 +54,7 @@ export default function Header() {
               href={item.href}
               className={cn(
                 "text-sm font-medium transition-colors hover:text-brand-blue",
-                isScrolled ? "text-slate-600" : "text-slate-200 lg:text-slate-700"
+                isScrolled ? "text-slate-600" : "text-white/90 hover:text-white"
               )}
             >
               {item.name}
@@ -62,24 +64,41 @@ export default function Header() {
 
         <div className="hidden lg:flex items-center gap-4">
           <div className="flex flex-col items-end mr-2">
-            <span className="text-[10px] uppercase tracking-widest text-brand-blue font-bold">Atendimento 24h</span>
-            <a href="tel:0800000000" className="text-sm font-bold text-brand-dark flex items-center gap-1">
-              <Phone size={14} className="text-brand-blue" />
-              0800 000 0000
+            <span className={cn(
+              "text-[10px] uppercase tracking-widest font-black transition-colors",
+              isScrolled ? "text-brand-blue" : "text-brand-blue/80"
+            )}>Plantão 24h</span>
+            <a 
+              href={`tel:${CONTACT_PHONE.replace(/\D/g, '')}`} 
+              className={cn(
+                "text-xl font-black flex items-center gap-1 transition-colors group",
+                isScrolled ? "text-brand-dark hover:text-brand-blue" : "text-white hover:text-white/80"
+              )}
+            >
+              <Phone size={18} className={cn(
+                "transition-transform group-hover:scale-110",
+                isScrolled ? "fill-brand-blue/20 text-brand-blue" : "fill-white/10 text-white"
+              )} />
+              {CONTACT_PHONE}
             </a>
           </div>
           <a
-            href="https://wa.me/5500000000000"
-            className="bg-brand-green hover:bg-green-600 text-white px-5 py-2.5 rounded-full flex items-center gap-2 text-sm font-semibold transition-all shadow-lg hover:shadow-green-200"
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noreferrer"
+            className="bg-brand-green hover:bg-green-600 text-white px-6 py-3 rounded-xl flex items-center gap-2 text-sm font-black transition-all shadow-lg hover:shadow-green-200 uppercase tracking-tight"
           >
-            <MessageCircle size={18} />
-            WhatsApp
+            <WhatsAppIcon size={18} />
+            Atendimento WhatsApp
           </a>
         </div>
 
         {/* Mobile Menu Toggle */}
         <button 
-          className="lg:hidden p-2 text-slate-700" 
+          className={cn(
+            "lg:hidden p-2 transition-colors",
+            isScrolled || mobileMenuOpen ? "text-slate-700" : "text-white"
+          )} 
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
           {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
@@ -108,21 +127,23 @@ export default function Header() {
               ))}
               <hr className="border-slate-100" />
               <div className="flex flex-col gap-4">
-                <a href="tel:0800000000" className="flex items-center gap-3 text-brand-dark font-bold">
-                  <div className="w-10 h-10 bg-slate-100 rounded-full flex items-center justify-center text-brand-blue">
+                <a href={`tel:${CONTACT_PHONE.replace(/\D/g, '')}`} className="flex items-center gap-3 text-brand-dark font-bold bg-slate-50 p-4 rounded-xl border border-slate-100">
+                  <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-brand-blue shadow-sm">
                     <Phone size={20} />
                   </div>
                   <div>
                     <p className="text-xs uppercase text-slate-500 font-normal">Emergência 24h</p>
-                    <p>0800 000 0000</p>
+                    <p className="text-lg">{CONTACT_PHONE}</p>
                   </div>
                 </a>
                 <a
-                  href="https://wa.me/5500000000000"
-                  className="bg-brand-green text-white p-4 rounded-xl flex items-center justify-center gap-2 font-bold"
+                  href={WHATSAPP_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="bg-brand-green text-white p-5 rounded-xl flex items-center justify-center gap-2 font-black shadow-xl shadow-green-100"
                 >
-                  <MessageCircle size={20} />
-                  Falar no WhatsApp
+                  <WhatsAppIcon size={20} />
+                  Falar no WhatsApp Agora
                 </a>
               </div>
             </div>

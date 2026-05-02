@@ -1,6 +1,8 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Shield, ArrowRight, MessageCircle, Clock } from 'lucide-react';
+import { Shield, ArrowRight, Clock } from 'lucide-react';
+import { WHATSAPP_URL } from '@/src/constants';
+import { WhatsAppIcon } from './Icons';
 
 export default function Hero() {
   return (
@@ -32,20 +34,22 @@ export default function Hero() {
               Atendimento rápido, humano e seguro. Somos especialistas no encaminhamento para as melhores clínicas masculinas e femininas do Brasil. Internações voluntárias e involuntárias.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-5">
               <a
-                href="https://wa.me/5500000000000"
-                className="bg-brand-green hover:bg-green-600 text-white px-8 py-4 rounded-xl flex items-center justify-center gap-3 text-lg font-bold transition-all shadow-xl shadow-green-900/20 group"
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noreferrer"
+                className="bg-brand-green hover:bg-green-600 text-white px-10 py-5 rounded-2xl flex items-center justify-center gap-3 text-xl font-black transition-all shadow-[0_20px_50px_rgba(40,167,69,0.3)] group animate-bounce-slow ring-4 ring-green-500/10 hover:ring-green-500/30"
               >
-                <MessageCircle size={22} />
+                <WhatsAppIcon size={26} />
                 Fale agora no WhatsApp
-                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                <ArrowRight size={20} className="group-hover:translate-x-2 transition-transform" />
               </a>
               <a
                 href="#servicos"
-                className="bg-white/5 hover:bg-white/10 text-white border border-white/10 px-8 py-4 rounded-xl flex items-center justify-center gap-3 text-lg font-bold transition-all"
+                className="bg-white/5 hover:bg-white/10 text-white border-2 border-white/10 px-8 py-5 rounded-2xl flex items-center justify-center gap-3 text-lg font-bold transition-all backdrop-blur-sm"
               >
-                Conhecer Serviços
+                Nossos Serviços
               </a>
             </div>
 
@@ -69,8 +73,11 @@ export default function Hero() {
           >
             <div className="relative z-10 rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
               <img 
-                src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&q=80&w=1000" 
+                src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&q=80&w=800" 
                 alt="Equipe de saúde profissional"
+                width="800"
+                height="600"
+                referrerPolicy="no-referrer"
                 className="w-full h-auto grayscale-[0.2] hover:grayscale-0 transition-all duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/80 via-transparent to-transparent" />
